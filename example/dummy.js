@@ -1,5 +1,5 @@
 'use strict';
-let Middlewares = require ('xena-middlewares');
+let Middlewares = require ('esrol-middlewares');
 let middlewares = new Middlewares();
 
 middlewares.registerMiddleware((req, res, next) => {

@@ -18,10 +18,13 @@
   },
   "config": {},
   "scripts": {
-    "test": "node_modules/.bin/mocha ./tests/test"
+    "test": "node_modules/.bin/mocha ./tests/test",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha ./tests/test",
+    "coveralls": "npm run-script coverage && node bin/coveralls.js < coverage/lcov.info"
   },
   "devDependencies": {
     "chai": "^3.4.0",
+    "coveralls": "^2.11.4",
     "mocha": "^2.3.3"
   },
   "dependencies": {

@@ -6,7 +6,7 @@ middlewares.registerMiddleware((req, res, next) => {
   // some code
   req.iterator++;
   console.log ('step 1');
-  next();  
+  next();
 }, 1);
 
 middlewares.registerMiddleware((req, res, next) => {
@@ -23,7 +23,7 @@ middlewares.registerMiddleware((req, res, next) => {
   // some code
   req.iterator++;
   console.log ('step 3');
-  next();  
+  next();
 }, 3);
 
 let router = {

@@ -20,7 +20,7 @@
   "scripts": {
     "test": "node_modules/.bin/mocha ./tests/test",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha ./tests/test",
-    "coveralls": "npm run-script coverage && node bin/coveralls.js < coverage/lcov.info"
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "devDependencies": {
     "chai": "^3.4.0",

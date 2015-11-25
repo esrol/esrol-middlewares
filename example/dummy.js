@@ -1,4 +1,5 @@
 'use strict';
+let http = require('http');
 let Middlewares = require ('esrol-middlewares');
 let middlewares = new Middlewares();
 
@@ -28,12 +29,12 @@ middlewares.registerMiddleware((req, res, next) => {
 
 let router = {
   route: function(req, res) {
-    console.log (req.iterator);
+    console.log ('Request passed through %s middlewares', req.iterator);
   }
 };
-let req = {
-  iterator: 0
-};
-let res = {};
 
-middlewares.onRequest(req, res, router.route, router);
+http.createServer((req, res) => {
+  req.iterator = 0;
+  middlewares.onRequest(req, res, router.route, router);
+}).listen(3333);
+console.log('Server is listening on port: 3333');

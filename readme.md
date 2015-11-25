@@ -1,4 +1,6 @@
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+[![NPM version][npm-image]][npm-url] 
+[![Build Status][travis-image]][travis-url] 
+[![Test coverage][coveralls-image]][coveralls-url]
 > A ES6 Middleware Class for esrol-server-app.
 Provide a convenient mechanism for filtering web requests
 entering your application.

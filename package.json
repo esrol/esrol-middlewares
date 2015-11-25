@@ -3,7 +3,7 @@
   "description": "Later",
   "version": "0.1.3",
   "main": "index.js",
-  "author": "Ivaylo Ivanov <Ivchoyyyy@gmail.com>",
+  "author": "Ivaylo Ivanov <ivaylo.ivanov.ipi@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/esrol/esrol-middlewares"
@@ -20,7 +20,7 @@
   "scripts": {
     "test": "node_modules/.bin/mocha ./tests/test",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha ./tests/test",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "coveralls": "node ./node_modules/istanbul/index.js cover ./node_modules/mocha/bin/_mocha ./tests/test --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "devDependencies": {
     "chai": "^3.4.0",

@@ -1,6 +1,9 @@
 'use strict';
-module.exports = function(req, res, next) {
-  setTimeout(() => {
-    next();
-  }, 100);
+module.exports = {
+  priority: 3,
+  middleware: function(req, res, next) {
+    setTimeout(() => {
+      next();
+    }, 100);
+  }
 };

@@ -1,12 +1,8 @@
+A ES6 Middleware Class for esrol-server-app. Provide a convenient mechanism for filtering web requests entering your application. Register and iterate through the registered middlewares on request. When the last registered middleware is resolved, the passed route as argument is called
+
 [![NPM version][npm-image]][npm-url] 
 [![Build Status][travis-image]][travis-url] 
 [![Test coverage][coveralls-image]][coveralls-url]
-> A ES6 Middleware Class for esrol-server-app.
-Provide a convenient mechanism for filtering web requests
-entering your application.
-Register and iterate through the registered middlewares
-on request. When the last registered middleware is resolved, the passed route
-as argument is called
 
 ## Installation
 
@@ -104,7 +100,6 @@ incorrect arguments are passed
 Call this method when you need to pass the request
 through the middleware
 
-**Kind**: global function  
 **Returns**: <code>mixed</code> - value - the returned value from the last middleware  
 **Access:** public  
 **Scope**: <code>object</code> scope - set scope for route param  
@@ -112,7 +107,7 @@ through the middleware
 | Param | Type | Description |
 | --- | --- | --- |
 | req | <code>object</code> | http(s) request |
-| res | <code>object</code> | http(s) request |
+| res | <code>object</code> | http(s) response |
 | route | <code>function</code> | the function which will be called when all middlewares are resolved |
 
 ## Tests
@@ -126,15 +121,7 @@ $ npm test
 
 ## License
 
-The MIT License (MIT)
-
-Copyright (c) 2015 Ivaylo Ivanov
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[MIT](LICENSE)
 
 
 [npm-image]: https://badge.fury.io/js/esrol-middlewares.svg

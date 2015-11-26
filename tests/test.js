@@ -10,11 +10,11 @@ describe('Middleware', () => {
 
     describe('registerMiddleware', () => {
       it('Should return array of middlewares with length 1', () => {
-        expect(middleware.registerMiddleware(mocks.simpleMiddleware, 2))
+        expect(middleware.registerMiddleware(mocks.simpleMiddleware))
         .to.have.length(1);
       });
       it('Should return array of middlewares with length 2', () => {
-        expect(middleware.registerMiddleware(mocks.secondSimpleMiddleware, 1))
+        expect(middleware.registerMiddleware(mocks.secondSimpleMiddleware))
         .to.have.length(2);
       });
     });
@@ -34,14 +34,17 @@ describe('Middleware', () => {
 
     describe('onRequest using async middleware', () => {
       it('Should return 200', (done) => {
-        let async = function(req, res, next) {
-          setTimeout(() => {
-            let result = next();
-            expect(result).to.equal(200);
-            done();
-          }, 100);
+        let async = {
+          priority: 3,
+          middleware: function(req, res, next) {
+            setTimeout(() => {
+              let result = next();
+              expect(result).to.equal(200);
+              done();
+            }, 100);
+          }
         };
-        expect(middleware.registerMiddleware(async, 3)).to.have.length(3);
+        expect(middleware.registerMiddleware(async)).to.have.length(3);
         middleware.onRequest(
           {},
           {},
@@ -65,7 +68,7 @@ describe('Middleware', () => {
     describe('registerMiddleware with only one param', () => {
       it(should, () => {
         expect(() => {
-          middleware.registerMiddleware(mocks.simpleMiddleware);
+          middleware.registerMiddleware({priority: 2});
         }).to.throw(Error);
       });
     });
@@ -96,8 +99,11 @@ describe('Middleware', () => {
 
     describe('onRequest when next() is not called', () => {
       it('Should return undefined', (done) => {
-        let async = function(req, res, next) {
-          done();
+        let async = {
+          priority: 1,
+          middleware: function(req, res, next) {
+            done();
+          }
         };
         expect(middleware.registerMiddleware(async, 4)).to.have.length(4);
         middleware.onRequest(

@@ -1,4 +1,7 @@
 'use strict';
-module.exports = function(req, res, next) {
-  return next();
+module.exports = {
+  priority: 2,
+  middleware: function(req, res, next) {
+    return next();
+  }
 };

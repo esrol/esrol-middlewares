@@ -76,7 +76,10 @@ describe('Middleware', () => {
     describe('registerMiddleware with non integer as priority param', () => {
       it(should, () => {
         expect(() => {
-          middleware.registerMiddleware({}, '2');
+          middleware.registerMiddleware({
+            priority: '2',
+            middleware: function(req, res, next) {}
+          });
         }).to.throw(Error);
       });
     });
@@ -92,7 +95,10 @@ describe('Middleware', () => {
     describe('registerMiddleware when middleware accept only 2 params', () => {
       it(should, () => {
         expect(() => {
-          middleware.registerMiddleware(function(req, res) {}, 2);
+          middleware.registerMiddleware({
+            priority: 2,
+            middleware: function(req, res) {}
+          });
         }).to.throw(Error);
       });
     });

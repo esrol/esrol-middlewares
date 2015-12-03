@@ -87,7 +87,7 @@ through the middleware</p>
 
 **Access:** public  
 <a name="registerMiddleware"></a>
-## registerMiddleware(middleware, priority) ⇒ <code>array</code>
+## registerMiddleware(middleware) ⇒ <code>array</code>
 Register middleware
 
 **Returns**: <code>array</code> - <code>this._queue</code> - registered middlewares  

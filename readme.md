@@ -23,29 +23,38 @@ let http = require('http');
 let Middlewares = require ('esrol-middlewares');
 let middlewares = new Middlewares();
 
-middlewares.registerMiddleware((req, res, next) => {
-  // some code
-  req.iterator++;
-  console.log ('step 1');
-  next();
-}, 1);
-
-middlewares.registerMiddleware((req, res, next) => {
-  // some code
-  setTimeout(() => {
+middlewares.registerMiddleware({
+  priority: 1,
+  middleware: function(req, res, next){
     // some code
     req.iterator++;
-    console.log ('step 2');
+    console.log ('step 1');
     next();
-  }, 1000);
-}, 2);
+  }
+});
 
-middlewares.registerMiddleware((req, res, next) => {
-  // some code
-  req.iterator++;
-  console.log ('step 3');
-  next();
-}, 3);
+middlewares.registerMiddleware({
+  priority: 2,
+  middleware: function(req, res, next) {
+    // some code
+    setTimeout(() => {
+      // some code
+      req.iterator++;
+      console.log ('step 2');
+      next();
+    }, 1000);
+  }
+});
+
+middlewares.registerMiddleware({
+  priority: 3,
+  middleware: function(req, res, next) {
+    // some code
+    req.iterator++;
+    console.log ('step 3');
+    next();
+  }
+});
 
 let router = {
   route: function(req, res) {
@@ -58,7 +67,6 @@ http.createServer((req, res) => {
   middlewares.onRequest(req, res, router.route, router);
 }).listen(3333);
 console.log('Server is listening on port: 3333');
-
 ```
 
 ## Classes
@@ -92,8 +100,7 @@ incorrect arguments are passed
 
 | Param | Type | Description |
 | --- | --- | --- |
-| middleware | <code>function</code> | middleware function: someFn(req, res, next) |
-| priority | <code>int</code> | determine the execution order |
+| middleware | <code>object</code> | {priority: 1, onRequest: function(req, res, next)} |
 
 <a name="onRequest"></a>
 ## onRequest(req, res, route) ⇒ <code>mixed</code>

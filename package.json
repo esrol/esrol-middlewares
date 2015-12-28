@@ -1,7 +1,7 @@
 {
   "name": "esrol-middlewares",
-  "description": "A ES6 Middleware Class for esrol-server-app. Provide a convenient mechanism for filtering web requests entering your application. Register and iterate through the registered middlewares on request. When the last registered middleware is resolved, the passed route as argument is called",
-  "version": "0.1.9",
+  "description": "Provide a convenient mechanism for accessing requests and response. Register and iterate through the registered middlewares on request. When the last registered middleware is resolved, the passed route as argument is called.",
+  "version": "0.2.0",
   "main": "index.js",
   "author": "Ivaylo Ivanov <ivaylo.ivanov.ipi@gmail.com>",
   "repository": {

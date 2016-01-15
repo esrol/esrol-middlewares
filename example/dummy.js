@@ -1,7 +1,7 @@
 'use strict';
-let http = require('http');
-let Middlewares = require ('esrol-middlewares');
-let middlewares = new Middlewares();
+const http = require('http');
+const Middlewares = require ('esrol-middlewares');
+const middlewares = new Middlewares();
 
 middlewares.registerMiddleware({
   priority: 1,
@@ -36,9 +36,10 @@ middlewares.registerMiddleware({
   }
 });
 
-let router = {
+const router = {
   route: function(req, res) {
     console.log ('Request passed through %s middlewares', req.iterator);
+    res.end();
   }
 };
 

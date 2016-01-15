@@ -1,6 +1,6 @@
 
-[![NPM version][npm-image]][npm-url] 
-[![Build Status][travis-image]][travis-url] 
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
 Provide a convenient mechanism for accessing requests and response. Register and iterate through the registered middlewares on request. When the last registered middleware is resolved, the passed route as argument is called.
@@ -22,9 +22,10 @@ $ npm install --save esrol-middlewares
 
 ```js
 'use strict';
-let http = require('http');
-let Middlewares = require ('esrol-middlewares');
-let middlewares = new Middlewares();
+'use strict';
+const http = require('http');
+const Middlewares = require ('esrol-middlewares');
+const middlewares = new Middlewares();
 
 middlewares.registerMiddleware({
   priority: 1,
@@ -59,9 +60,10 @@ middlewares.registerMiddleware({
   }
 });
 
-let router = {
+const router = {
   route: function(req, res) {
     console.log ('Request passed through %s middlewares', req.iterator);
+    res.end();
   }
 };
 
@@ -70,6 +72,7 @@ http.createServer((req, res) => {
   middlewares.onRequest(req, res, router.route, router);
 }).listen(3333);
 console.log('Server is listening on port: 3333');
+
 ```
 _Please see the <a href="https://github.com/esrol/esrol-server-app/wiki/Middlewares" target="_blank">docs</a> here, for information how to use middlewares_
 
